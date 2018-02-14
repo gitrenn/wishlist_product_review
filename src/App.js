@@ -4,6 +4,7 @@ import { Container, Header } from 'semantic-ui-react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './Components/video_list';
 import VideoDetail from './Components/video_detail';
+import { Grid, Segment } from 'semantic-ui-react';
 
 const API_KEY = 'AIzaSyBlsDKSEnADH6MFN6rhFZQNfJuN-ceK99k';
 
@@ -27,15 +28,27 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header>       
-          <h1>Welcome to React</h1>
+        <Header textAlign='center'>       
+          <h1>Gift Review Demo</h1>
         </Header>
         <Container>
-          <SearchBar />
-          <VideoDetail video={this.state.selectedVideo} />
-          <VideoList 
-            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-            videos={this.state.videos} />
+         <Grid stackable columns={2}>
+          <Grid.Column width={10}>
+            <Segment>
+              <SearchBar />
+            </Segment>
+            <Segment>
+              <VideoDetail video={this.state.selectedVideo} />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <Segment>
+              <VideoList 
+                onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                videos={this.state.videos} />
+            </Segment>
+          </Grid.Column>
+         </Grid>
         </Container>
         
       </div>
