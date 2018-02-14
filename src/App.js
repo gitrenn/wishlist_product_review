@@ -3,6 +3,7 @@ import SearchBar from './Components/search_bar';
 import { Container, Header } from 'semantic-ui-react';
 import YTSearch from 'youtube-api-search';
 import VideoList from './Components/video_list';
+import VideoDetail from './Components/video_detail';
 
 const API_KEY = 'AIzaSyBlsDKSEnADH6MFN6rhFZQNfJuN-ceK99k';
 
@@ -11,11 +12,15 @@ class App extends Component {
     super(props);
 
     this.state = {
-      videos: []
+      videos: [],
+      selectedVideo: null
     };
 
-    YTSearch({key: API_KEY, term: 'babe pig in the city'}, videos => {
-      this.setState({ videos }) // when the key and value are the same name, we can use this shortcut 
+    YTSearch({key: API_KEY, term: 'DJI'}, videos => {
+      this.setState({ 
+        videos: videos,
+        selectedVideo: videos[0]
+      }) // when the key and value are the same name, we can use this shortcut 
       console.log(videos);
     })
   }
@@ -27,7 +32,10 @@ class App extends Component {
         </Header>
         <Container>
           <SearchBar />
-          <VideoList videos={this.state.videos} />
+          <VideoDetail video={this.state.selectedVideo} />
+          <VideoList 
+            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos} />
         </Container>
         
       </div>
