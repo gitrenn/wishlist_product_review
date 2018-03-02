@@ -1,5 +1,5 @@
 import React from 'react';
-import { Embed, Header } from 'semantic-ui-react';
+import { Segment, Embed, Header } from 'semantic-ui-react';
 
 const VideoDetail = ({video}) => {
     if(!video) {
@@ -9,13 +9,17 @@ const VideoDetail = ({video}) => {
 
     return (
         <div>
-            <Header>{video.snippet.title}</Header>
+            <Segment attached>
+                <Header>{video.snippet.title}</Header>
+            </Segment>
             <Embed 
                 id={videoId}
                 placeholder={video.snippet.thumbnails.high.url}
                 source='youtube'
             />
+            <Segment attached>
             <p>{video.snippet.description}</p>
+            </Segment>
         </div>
     )
 }

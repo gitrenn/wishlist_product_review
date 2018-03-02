@@ -33,9 +33,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header textAlign='center'>       
-          <h1>Gift Review Demo</h1>
-        </Header>
+        <Segment>
+          <Header as='h1' textAlign='center' color='blue'>       
+            Gift Review Demo
+          </Header>
+        </Segment> 
         <Container>
          <Grid stackable columns={2}>
           <Grid.Column width={10}>

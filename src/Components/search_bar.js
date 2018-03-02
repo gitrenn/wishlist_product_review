@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Icon, Button } from 'semantic-ui-react';
+import { Input, Icon, Button } from 'semantic-ui-react';
 
 
 class SearchBar extends Component {
@@ -27,26 +27,23 @@ class SearchBar extends Component {
 
     render (){
         return (
-            <div>
-                <Form>
-                    <Input 
-                        onChange={this.onInputChange}
-                        value={this.state.term}
-                        icon='search' 
-                        placeholder='Search...' />                     
-                    <Button.Group floated='right'>
-                        <Button
-                            onClick={this.handleSubmit} 
-                            type='submit' 
-                            animated>
-                            <Button.Content visible>Search</Button.Content>
-                            <Button.Content hidden>
-                                <Icon name='youtube' /> YouTube
-                            </Button.Content>
-                        </Button>
-                    </Button.Group>
-                </Form>
-            </div>
+            <Input 
+                onChange={this.onInputChange}
+                value={this.state.term}
+                icon='search' 
+                placeholder='Search...'
+                action >                     
+                <input />
+                <Button
+                    onClick={this.handleSubmit} 
+                    type='submit' 
+                    animated>
+                    <Button.Content visible>Search</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='youtube' /> YouTube
+                    </Button.Content>
+                </Button>
+            </Input>
         )
 
     }
